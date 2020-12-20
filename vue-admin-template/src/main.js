@@ -29,9 +29,12 @@ const i18n = setupAndGetI18n(Vue);
 import swatches from 'vue-swatches';
 import "vue-swatches/dist/vue-swatches.min.css"
 
-//import echarts from 'echarts'
+/*import echarts from 'echarts';
 
-//Vue.prototype.$echarts = echarts-->
+Vue.prototype.$echarts = echarts;
+var echarts = require('echarts'); */
+import * as echarts from 'echarts';
+
 Vue.use(VueChartkick, { adapter: Chart });
 Vue.component('full-calendar', fullCalendar);
 Vue.component('swatches', swatches);

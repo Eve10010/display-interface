@@ -4,7 +4,7 @@
     fixed app>
     <v-toolbar flat dark :color="$root.themeColor" class="toolbar">
       <router-link :to="{ name: 'Dashboard' }">
-        <img src="static/logo.png" width="36px"></img>
+        <img src="static/logo.png" width="46px"></img>
       </router-link>
       <router-link :to="{ name: 'Dashboard' }" class="text">
         电子科技大学
@@ -15,35 +15,35 @@
         <v-list-tile-action>
           
         </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 1}, 'item-title' ]" >{{ $t('HiPS') }}</v-list-tile-title>
+        <v-list-tile-title :class="[{'active': selectedIndex === 1}, 'item-title' ]" >{{ $t('分层参数服务器架构') }}</v-list-tile-title>
       </v-list-tile>
 
       <v-list-tile @click="changeRoute('BSC', 2)">
         <v-list-tile-action>
           
         </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 2}, 'item-title' ]"> {{ $t('BSC') }}</v-list-tile-title>
+        <v-list-tile-title :class="[{'active': selectedIndex === 2}, 'item-title' ]"> {{ $t('双向稀疏梯度压缩') }}</v-list-tile-title>
       </v-list-tile>
 
-      <v-list-tile @click="changeRoute('PGT', 3)">
+      <v-list-tile @click="changeRoute('DGT', 3)">
       <v-list-tile-action>
          
         </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('DGT') }}</v-list-tile-title>
+        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('差异化梯度传输') }}</v-list-tile-title>
       </v-list-tile>
 
             <v-list-tile @click="changeRoute('TS', 4)">
       <v-list-tile-action>
         
         </v-list-tile-action> 
-        <v-list-tile-title :class="[{'active': selectedIndex === 4}, 'item-title' ]">{{ $t('TS') }}</v-list-tile-title>
+        <v-list-tile-title :class="[{'active': selectedIndex === 4}, 'item-title' ]">{{ $t('多播传输调度') }}</v-list-tile-title>
       </v-list-tile>
 
             <v-list-tile @click="changeRoute('P3', 5)">
       <v-list-tile-action>
         
         </v-list-tile-action> 
-        <v-list-tile-title :class="[{'active': selectedIndex === 5}, 'item-title' ]">{{ $t('P3') }}</v-list-tile-title>
+        <v-list-tile-title :class="[{'active': selectedIndex === 5}, 'item-title' ]">{{ $t('细粒度传输调度') }}</v-list-tile-title>
       </v-list-tile>
 
  <!--

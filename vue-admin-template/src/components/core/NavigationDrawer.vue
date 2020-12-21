@@ -30,7 +30,7 @@
       <v-list-tile-action>
          
         </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('差异化梯度传输') }}</v-list-tile-title>
+        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('差异化梯度调度传输') }}</v-list-tile-title>
       </v-list-tile>
 
             <v-list-tile @click="changeRoute('TS', 4)">
@@ -53,7 +53,7 @@
       <v-list-tile @click="changeRoute('HiPS_2', 1)">
         <v-list-tile-action>
         </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 1}, 'item-title' ]" >{{ $t('分层参数服务器架构') }}</v-list-tile-title>
+        <v-list-tile-title :class="[{'active': selectedIndex === 1}, 'item-title' ]" >{{ $t('机器学习分布式聚合架构（含中继节点）') }}</v-list-tile-title>
       </v-list-tile>
 
       <v-list-tile @click="changeRoute('BSC_2', 2)">
@@ -67,7 +67,7 @@
       <v-list-tile-action>
          
         </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('差异化梯度传输') }}</v-list-tile-title>
+        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('差异化梯度调度传输') }}</v-list-tile-title>
       </v-list-tile>
 
             <v-list-tile @click="changeRoute('TS_2', 4)">

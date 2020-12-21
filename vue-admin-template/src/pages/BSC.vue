@@ -1,9 +1,11 @@
 <template>
   <div class="container">
+    <v-btn @click="changSRight">切换简介显示状态</v-btn>
     <div class="left">
-      <div style="width:600px;height:450px;" ref="chart"></div>
+      <div style="width:600px;height:450px;" ref="chart1"></div>
+      <div style="width:600px;height:450px;" ref="chart2"></div>
     </div>
-    <div class="right" >
+    <div class="right" v-show="showRight">
       <div class="right-inside">
         <h2 style="align:center">分层参数服务器架构（HiPS）</h2>
         <img src="static/HiPS.png"></img>
@@ -52,13 +54,21 @@
   const echarts = require('echarts');
   export default{
     data () {
-      return {};  
+      return {
+        showRight:false,
+      };  
     },
     methods: {
-      initCharts () {
-        let myChart = echarts.init(this.$refs.chart);
+      changSRight () {
+        
+        this.showRight = ! this.showRight;
+
+      },
+
+      initCharts1 () {
+        let myChart1 = echarts.init(this.$refs.chart1);
       // 绘制图表
-        myChart.setOption({
+        myChart1.setOption({
           legend: {},
           tooltip: {},
           dataset: {
@@ -80,10 +90,33 @@
               {type: 'bar'}
           ]
         });
+      },
+      initCharts2 () {
+        let myChart2 = echarts.init(this.$refs.chart2);
+      // 绘制图表
+        myChart2.setOption({
+            title: {
+                text: '动态数据 + 时间坐标轴'
+            },
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line',
+                smooth: false
+            }]
+
+        });
       }
     },
   mounted () {
-    this.initCharts();
+    this.initCharts1();
+    this.initCharts2();
   }
   }
 </script>

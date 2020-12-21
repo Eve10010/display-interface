@@ -1,151 +1,255 @@
 <template>
-    <v-container grid-list-xl fluid>
-        <v-layout row wrap >
-          
-          <!--<v-flex sm12>
-            <h4>Basic</h4>
-          </v-flex>-->
-          <v-flex lg64 sm8 >
-            <button type="button" >点我haodene!</button>
-            <h4>ResNet-18</h4>
-            <column-chart :data="data1" :colors="['#b00']" label="单轮迭代时间" ytitle="单轮迭代时间" style="width=50%"></column-chart>
-            <h4>ResNet-34</h4>
-            <column-chart :data="data2" :colors="['#b00']" label="单轮迭代时间" ytitle="单轮迭代时间"></column-chart>
-          </v-flex>
-          <v-flex lg64 sm4 v-show="true">
-            <div id="HiPS" style="background:#F5F5F5">  
-              <h4 style="align:center">分层参数服务器架构（HiPS）</h4>
-              <img src="static/HiPS.png" width="300px" ></img>
-              <p>针对现有典型框架中计算节点与参数服务器直接通信引发的显著通信瓶颈，
-                根据数据中心内外通信环境的巨大差异性，设计了分层参数服务器通信架构HiPS，
+  <div class="container">
+    <div class="left">
+      <div style="width:600px;height:450px;" ref="chart1"></div>
+      <div style="width:600px;height:450px;" ref="chart2"></div>
+    </div>
+    <div class="right" >
+      <div class="right-inside">
+        <h2 style="align:center">分层参数服务器架构（HiPS）</h2>
+        <figure>
+          <img src="static/HiPS.png"></img>
+          <figcaption align="center">HiPS架构示意图</figcaption>
+        </figure>
+        <br>
+        <p>针对现有典型框架中计算节点与参数服务器直接通信引发的<strong>显著通信瓶颈</strong>
+                ，根据数据中心内外通信环境的巨大差异性，设计了<strong>分层参数服务器通信架构HiPS</strong>，
                 实现对数据中心内外通信环境的隔离，同时降低通信、运维、安全等多方面成本和风险。
-              </p>
-
-
-            </div>
-            
-          </v-flex>
-          <!--<v-flex lg6 lg12 v-for="(item,index) in users" :key=" 'mini' + index">
-            <social-widget
-              mini
-              v-bind="item">
-            </social-widget>
-          </v-flex>
-          <v-flex sm12>
-            <h4>Normal</h4>
-          </v-flex>
-          <v-flex lg3 sm12 v-for="(item,index) in users" :key=" 'basic' + index">
-            <social-widget v-bind="item">
-            </social-widget>
-          </v-flex>
-          <v-flex sm12>
-            <h4>Name Card with top nav</h4>
-          </v-flex>
-          <v-flex lg3 sm12 v-for="(item,index) in users" :key=" 'basic-top-nav' + index">
-            <social-widget
-              top-nav
-              v-bind="item">
-            </social-widget>
-          </v-flex>
-          <v-flex sm12>
-            <h4>Bottom Nav Name Card</h4>
-          </v-flex>
-          <v-flex lg3 sm12 v-for="(item,index) in users" :key=" 'bottom-nav' + index">
-            <social-widget
-              bottom-nav
-              v-bind="item">
-            </social-widget>
-          </v-flex>
-          <v-flex sm12>
-            <h4>Contact Card</h4>
-          </v-flex>-->
-          <!-- <v-flex lg4 sm12>
-            <profile-card></profile-card>
-          </v-flex> -->
-        </v-layout>
-      </v-container>
+        </p>
+        <br>
+        <figure>
+          <img src="static/HiPS-procedure.png"></img>
+          <figcaption align="center">HiPS流程示意图</figcaption>
+        </figure>
+        
+        <strong>
+          核心思想：
+        </strong>
+        <p>
+          参与数据中心内局部同步
+          
+        </p>
+        <p>
+          
+          主控数据中心处全局同步
+        </p>
+        
+      </div>
+    </div>
+  </div>
 </template>
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
-
-export default {
-  data () {
+  function randomData() {
+    now = new Date(+now + oneDay);
+    value = value + Math.random() * 21 - 10;
     return {
-      data1: {'HiPS-1G': 1.22, 'HiPS-155M': 1.78, 'MXNET-1G': 2.29, 'MXNET-155M': 6.70},
-      data2: {'HiPS-1G': 13.86, 'HiPS-155M': 29.02, 'MXNET-1G': 33.53, 'MXNET-155M': 131.49},
-      users: [
-        {
-          jobTitle: 'Web Developer',
-          name: 'Michael Wang',
-          color: '#fffff0',
-          dark: true,
-          avatar: {
-            src: 'https://avataaars.io/?avatarStyle=Transparent&topType=WinterHat4&accessoriesType=Prescription01&hatColor=Black&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Black&graphicType=Selena&eyeType=Squint&eyebrowType=AngryNatural&mouthType=Default&skinColor=DarkBrown',
-            size: '36'
-          }
-        },
-        {
-          jobTitle: 'Web Designer',
-          name: 'Jessie J',
-          color: '#ccc',
-          dark: true,
-          avatar: {
-            src: 'https://avataaars.io/?avatarStyle=Transparent&topType=WinterHat1&accessoriesType=Sunglasses&hatColor=Red&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light',
-            size: '36'
-          }
-        },
-        /*
-        {
-          jobTitle: 'Web Developer',
-          name: 'Jim J',
-          color: 'teal',
-          dark: true,
-          avatar: {
-            src: 'https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=Sunglasses&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Happy&eyebrowType=Default&mouthType=Default&skinColor=Light',
-            size: '36'
-          },
-        },
+      name: now.toString(),
+      value: [
+        [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+          Math.round(value)
+        ]
+      };
+  }
 
-        {
-          jobTitle: 'Product Manager',
-          name: 'John Doe',
-          color: '#a51288',
-          dark: true,
-          cardBgImage: '/static/bg/15.jpg',
-          avatar: {
-            src: 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairSides&accessoriesType=Blank&hairColor=BrownDark&facialHairType=BeardMedium&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Gray01&eyeType=WinkWacky&eyebrowType=SadConcerned&mouthType=ScreamOpen&skinColor=Brown',
-            size: '36'
-          },
-        },
-*/
-      ]
+  var data = [];
+  var now = +new Date(1997, 9, 3);
+  var oneDay = 24 * 3600 * 1000;
+  var value = Math.random() * 1000;
+  var myChart1;
+  var myChart2;
+  for (var i = 0; i < 5; i++) {
+      data.push(randomData());
+  }
+ 
+  const echarts = require('echarts');
+  export default{
+    
+    data () {
+      return {
+        timer: ''
+      };  
+    },
+    methods: {
+      initCharts1 () {
+        myChart1 = echarts.init(this.$refs.chart1);
+        // 绘制图表
+        myChart1.setOption({
+           title: {
+              text: '动态数据 + 时间坐标轴'
+           },
+           tooltip: {
+              trigger: 'axis',
+              formatter: function (params) {
+                  params = params[0];
+                  var date = new Date(params.name);
+                  return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+              },
+              axisPointer: {
+                  animation: false
+              }
+            },
+            xAxis: {
+                type: 'time',
+                splitLine: {
+                    show: false
+                }
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%'],
+                splitLine: {
+                    show: false
+                }
+            },
+            series: [{
+                name: '模拟数据',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                data: data
+            }]
+          });
+      },
+      updateCharts1 () {
+          for (var i = 0; i < 5; i++) {
+              data.push(randomData());
+          }
+
+          myChart1.setOption({
+              series: [{
+                  data: data
+              }]
+          });
+      },
+
+
+      initCharts2 () {
+        
+        myChart2 = echarts.init(this.$refs.chart2);
+        // 绘制图表
+        myChart2.setOption({
+           title: {
+              text: '动态数据 + 时间坐标轴'
+           },
+           tooltip: {
+              trigger: 'axis',
+              formatter: function (params) {
+                  params = params[0];
+                  var date = new Date(params.name);
+                  return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+              },
+              axisPointer: {
+                  animation: false
+              }
+            },
+            
+            xAxis: {
+                name:'时间',
+                show:true,
+                type: 'time',
+                splitLine: {
+                    show: false
+                },
+                axisLine:{
+                  lineStyle:{
+                    width:2,
+                  }
+
+                }
+            },
+            yAxis: {
+                name:'数值',
+                show:true,
+                type: 'value',
+                boundaryGap: [0, '100%'],
+                splitLine: {
+                    show: true
+                },
+                axisLine:{
+                  show:true,
+                  lineStyle:{
+                    width:2,
+                    color:'black',
+                  },
+
+                },
+            },
+            series: [{
+                name: '模拟数据',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                data: data
+            }]
+          });
+      },
+      updateCharts2 () {
+          // for (var i = 0; i < 5; i++) {
+          //     data.push(randomData());
+          // }
+
+          myChart2.setOption({
+              series: [{
+                  data: data
+              }]
+          });
+      },
+    },
+    mounted () {
+      this.initCharts1();
+      this.initCharts2();
+      //TODO: watch
+      this.timer = setInterval(this.updateCharts1, 1000);
+      
+      //TODO: watch
+      this.timer = setInterval(this.updateCharts2, 1000);
+      
     }
   }
-}
+
 </script>
 
+ 
 <style scoped>
-
-
-p, li {
-  font-size: 20px;
-  /* line-height 行间距 后而可以跟不同的参数，如果是数字，就是当前字体大小乘上数字 */    
-  line-height: 1.5;
-  letter-spacing: 1px;
+.container{
+  /* background: white; */
+  /* margin-top: 8px; */
+  /* text-align: center; */
+  padding: 0%;
+  float:left;
+  width:100%;
 }
-body {
-  /*width: 800px;
-  margin中0 auto代表居中对齐*/
-  margin: 0 auto;
-  /*background-color: #FF9500;*/
-  padding: 20px 20px 20px 20px;
-  border: 5px solid rgb(42, 4, 92);
+.left{
+  font-size: 16px;
+  width:65%;
+  padding: 15px 1%;
+  position:absolute;
+  display: flex;
+  display: -webkit-flex;
+  align-items:center;
+  justify-content:center;
+  /* color: #008cff; */
 }
 
-img{
+.right{
+  float: right;
+  width: 30%;
+  height:1000px;
+  padding: 15px 1%;
+  background: white;
+  margin:0px 0px 0px 0px;
+  border-left:2px solid #f5f5f5;
+}
+.left img, .right img{
   display: block;
   margin: 0 auto;
+  width: 80%;
 }
 
+p{
+  text-indent: 2em;
+
+}
+ 
 </style>

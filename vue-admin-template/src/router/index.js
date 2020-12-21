@@ -7,30 +7,24 @@ import Media from '../pages/Media.vue';
 import Snackbar from '../pages/Snackbar.vue';
 import Chart from '../pages/Chart.vue';
 import HiPS from '../pages/HiPS.vue';
+import HiPS_2 from '../pages/HiPS_2.vue';
 import Mailbox from '../pages/Mailbox.vue';
 import Calendar from '../pages/Calendar.vue';
 import Login from '../pages/core/Login.vue';
 import Error from '../pages/core/Error.vue';
 import BSC from '../pages/BSC.vue';
+import BSC_2 from '../pages/BSC_2.vue';
 import DGT from '../pages/DGT.vue';
+import DGT_2 from '../pages/DGT_2.vue';
 import TS from '../pages/TS.vue';
+import TS_2 from '../pages/TS_2.vue';
 import P3 from '../pages/P3.vue';
-
+import P3_2 from '../pages/P3_2.vue';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
-    /*{
-      path: '/',
-      name: 'Dashboard',
-      component: Dashboard,
-      meta: {
-        breadcrumb: [
-          { name: 'dashboard' }
-        ]
-      }
-    },*/
     {
       path: '/HiPS',
       name: 'HiPS',
@@ -49,7 +43,7 @@ export default new Router({
       meta: {
         breadcrumb: [
           { name: 'dashboard', href: 'Dashboard' },
-          { name: 'sBSC' }
+          { name: 'BSC' }
         ]
       }
     },
@@ -87,31 +81,60 @@ export default new Router({
       }
     },
     {
-      path: '/chart',
-      name: 'Chart',
-      component: Chart,
+      path: '/HiPS_2',
+      name: 'HiPS_2',
+      component: HiPS_2,
       meta: {
         breadcrumb: [
           { name: 'dashboard', href: 'Dashboard' },
-          { name: 'charts' }
+          { name: 'HiPS_2' }
         ]
       }
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login,
+      path: '/BSC_2',
+      name: 'BSC_2',
+      component: BSC_2,
       meta: {
-        allowAnonymous: true
+        breadcrumb: [
+          { name: 'dashboard', href: 'Dashboard' },
+          { name: 'BSC_2' }
+        ]
       }
     },
     {
-      path: '/error',
-      name: 'Error',
-      component: Error,
+      path: '/DGT_2',
+      name: 'DGT_2',
+      component: DGT_2,
       meta: {
-        allowAnonymous: true
+        breadcrumb: [
+          { name: 'dashboard', href: 'Dashboard' },
+          { name: 'DGT_2' }
+        ]
       }
     },
+    {
+      path: '/TS_2',
+      name: 'TS_2',
+      component: TS_2,
+      meta: {
+        breadcrumb: [
+          { name: 'dashboard', href: 'Dashboard' },
+          { name: 'TS_2' }
+        ]
+      }
+    },
+    {
+      path: '/P3_2',
+      name: 'P3_2',
+      component: Chart,
+      meta: {
+        breadcrumb: [
+          { name: 'dashboard', href: 'Dashboard' },
+          { name: 'P3_2' }
+        ]
+      }
+    },
+
   ]
 });

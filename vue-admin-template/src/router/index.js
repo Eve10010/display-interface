@@ -72,7 +72,7 @@ export default new Router({
     {
       path: '/P3',
       name: 'P3',
-      component: Chart,
+      component: P3,
       meta: {
         breadcrumb: [
           { name: 'dashboard', href: 'Dashboard' },
@@ -127,7 +127,7 @@ export default new Router({
     {
       path: '/P3_2',
       name: 'P3_2',
-      component: Chart,
+      component: P3_2,
       meta: {
         breadcrumb: [
           { name: 'dashboard', href: 'Dashboard' },

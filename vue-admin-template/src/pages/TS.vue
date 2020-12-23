@@ -12,32 +12,16 @@
     </div>
     <div class="right" >
       <div class="right-inside">
-        <h2 style="align:center">分层参数服务器架构（HiPS）</h2>
+        <h2 style="align:center">多播传送调度（TSEngine）</h2>
         <figure>
-          <img src="static/HiPS.png"></img>
-          <figcaption align="center">HiPS架构示意图</figcaption>
+            <img src="static/TS示意图.png"></img>
+            <figcaption align="center">TSEngine示意图</figcaption>
         </figure>
-        <br>
-        <p>针对现有典型框架中计算节点与参数服务器直接通信引发的<strong>显著通信瓶颈</strong>
-                ，根据数据中心内外通信环境的巨大差异性，设计了<strong>分层参数服务器通信架构HiPS</strong>，
-                实现对数据中心内外通信环境的隔离，同时降低通信、运维、安全等多方面成本和风险。
-        </p>
-        <br>
-        <figure>
-          <img src="static/HiPS-procedure.png"></img>
-          <figcaption align="center">HiPS流程示意图</figcaption>
-        </figure>
-        
         <strong>
-          核心思想：
+            核心思想：
         </strong>
         <p>
-          参与数据中心内局部同步
-          
-        </p>
-        <p>
-          
-          主控数据中心处全局同步
+            //这里写TS的核心思想……
         </p>
         
       </div>
@@ -301,7 +285,7 @@
   width:100%;
 }
 .left{
-  font-size: 16px;
+  /* font-size: 16px; */
   width:70%;
   padding: 15px 1%;
   position:absolute;
@@ -315,17 +299,17 @@
 .right{
   float: right;
   width: 30%;
-  height:1000px;
+  height: 900px;
   padding: 15px 1%;
   background: white;
   margin:0px 0px 0px 0px;
   border-left:2px solid #f5f5f5;
 }
-.left img, .right img{
+/* .left img, .right img{
   display: block;
   margin: 0 auto;
   width: 80%;
-}
+} */
 
 p{
   text-indent: 2em;

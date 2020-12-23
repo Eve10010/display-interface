@@ -43,6 +43,10 @@
 
 <script>
   const echarts = require('echarts');
+  var title_size = 28;
+  var legend_size = 18;
+  var yAxis_size = 15;
+  var xAxis_size = 15;
   export default{
     data () {
       return {
@@ -60,6 +64,9 @@
             tooltip: {},
             title:{
               text:'关于DGT算法的HiPS框架单轮迭代时间',
+              textStyle:{
+                fontSize:title_size, //字体大小
+              },
             },
             
             
@@ -72,13 +79,20 @@
                 type: 'category', 
                 data: ['HiPS-1G', 'HiPS-155M', 'HiPS+DGT-155M'],
                 axisLabel:{
-                interval: 0,
-                // rotate:15
+                    fontSize:xAxis_size,
+                    interval: 0,
                 },
+                
             },
             yAxis:{
                 type: 'value', 
-                name: '单轮迭代时间（s）'
+                name: '单轮迭代时间（s）',
+                nameTextStyle:{
+                  fontSize:yAxis_size,
+                },
+                axisLabel:{
+                  fontSize:yAxis_size,
+                },
             },
             
             series: {
@@ -111,7 +125,7 @@
   width:100%;
 }
 .left{
-  font-size: 16px;
+  /* font-size: 16px; */
   width:70%;
   padding: 15px 1%;
   position:absolute;
@@ -127,13 +141,13 @@
   align-self: start;
 }
 .pic-echarts{
-  width:520px;
-  height:390px;
+  width:600px;
+  height:450px;
 }
 .right{
 
   float: right;
-  height: 1500px;
+  height: 900px;
   width: 30%;
   padding: 15px 1%;
   background: white;
@@ -141,11 +155,11 @@
   border-left:2px solid #f5f5f5;
 }
 
-.left img, .right img{
+/* .left img, .right img{
   display: block;
   margin: 0 auto;
   width: 80%;
-}
+} */
 
 p{
   text-indent: 2em;

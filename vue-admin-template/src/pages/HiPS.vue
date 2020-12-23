@@ -221,7 +221,7 @@
   width:100%;
 }
 .left{
-  font-size: 16px;
+  /* font-size: 16px; */
   width:65%;
   padding: 15px 1%;
   position:absolute;
@@ -235,17 +235,17 @@
 .right{
   float: right;
   width: 30%;
-  height:1000px;
+  height:1100px;
   padding: 15px 1%;
   background: white;
   margin:0px 0px 0px 0px;
   border-left:2px solid #f5f5f5;
 }
-.left img, .right img{
+/* .left img, .right img{
   display: block;
   margin: 0 auto;
   width: 80%;
-}
+} */
 
 p{
   text-indent: 2em;

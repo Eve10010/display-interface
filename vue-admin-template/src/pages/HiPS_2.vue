@@ -57,6 +57,10 @@
 </template>
 
 <script>
+  var title_size = 28;
+  var legend_size = 18;
+  var yAxis_size = 15;
+  var xAxis_size = 15;
   const echarts = require('echarts');
   export default{
     data () {
@@ -73,16 +77,25 @@
         let myChart1 = echarts.init(this.$refs.chart1);
         // 绘制图表
         myChart1.setOption({
-          legend: {top:'10%',right:0 },
+          legend: {
+            top:'10%',
+            // right:0,
+            textStyle:{
+              fontSize:legend_size, //字体大小
+            }, 
+          },
           grid: {
-                top: '20%',
-                left: '4%',
+                top: '30%',
+                left: '5%',
                 right:'4%',
                 bottom: '3%',
                 containLabel: true
           },
           title:{
               text:'HiPS与MXNET单次迭代时间对比',
+              textStyle:{
+              fontSize:title_size, //字体大小
+            },
           },
             tooltip: {},
             dataset: {
@@ -95,8 +108,25 @@
                     {product: 'MXNET-155M', 'ResNet-18': 6.70, 'ResNet-34': 131.49, 'ResNet-50': 153.35, 'ResNet-101': 277.44}
                 ]
             },
-            xAxis: {type: 'category'},
-            yAxis: {name:'单轮迭代时间（s）'},
+            xAxis: {
+              type: 'category',
+              axisLabel:{
+                    fontSize:xAxis_size,
+                    interval: 0,
+                    // rotate:20
+              },
+              
+            },
+            yAxis: {
+              name:'单轮迭代时间（s）',
+              nameTextStyle:{
+                fontSize:yAxis_size,
+              },
+              axisLabel:{
+                fontSize:yAxis_size,
+                // rotate:20
+              },
+            },
             // Declare several bar series, each will be mapped
             // to a column of dataset.source by default.
             series: [
@@ -104,8 +134,8 @@
                 {type: 'bar'},
                 {type: 'bar'},
                 {type: 'bar'}
-            ]
-        });
+            ],
+          });
       },
     },
   mounted () {
@@ -125,7 +155,7 @@
   width:100%;
 }
 .left{
-  font-size: 16px;
+  /* font-size: 16px; */
   width:70%;
   padding: 15px 1%;
   position:absolute;
@@ -144,16 +174,17 @@
 
   float: right;
   width: 30%;
+  height: 1100px;
   padding: 15px 1%;
   background: white;
   margin:0px 0px 0px 0px;
   border-left:2px solid #f5f5f5;
 }
-.left img, .right img{
+/* .left img, .right img{
   display: block;
   margin: 0 auto;
   width: 80%;
-}
+} */
 
 p{
   text-indent: 2em;

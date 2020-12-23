@@ -7,44 +7,39 @@
     </div>
     <div class="right" v-show="showRight">
       <div class="right-inside">
-        <h2 style="align:center">分层参数服务器架构（HiPS）</h2>
-        <img src="static/HiPS.png"></img>
-        <p>针对现有典型框架中计算节点与参数服务器直接通信引发的显著通信瓶颈，
-                根据数据中心内外通信环境的巨大差异性，设计了分层参数服务器通信架构HiPS，
-                实现对数据中心内外通信环境的隔离，同时降低通信、运维、安全等多方面成本和风险。
+        <h2 style="align:center">轻量级数据传输技术</h2>
+        <p>通过减少带宽受限网络传输的模型数据量实现高效通信。
+            项目从稀疏化和量化两个方面着手，开发了<strong>双向梯度稀疏传输技术</strong>和<strong>混合精度传输技术</strong>，
+            分别减少传输数据的数量和比特位数，以实现大规模模型数据在带宽受限网络中的轻量传输。
         </p>
-        
-        <br>
-        
-        <strong>
-          核心思想：
-        </strong>
-        <p>
-          参与数据中心内局部同步
-        </p>
-        <p>
-          主控数据中心处全局同步
-        </p>
-        <img src="static/HiPS.png"></img>
-        <p>针对现有典型框架中计算节点与参数服务器直接通信引发的显著通信瓶颈，
-                根据数据中心内外通信环境的巨大差异性，设计了分层参数服务器通信架构HiPS，
-                实现对数据中心内外通信环境的隔离，同时降低通信、运维、安全等多方面成本和风险。
-        </p>
-        
-        <br>
-        
-        <strong>
-          核心思想：
-        </strong>
-        <p>
-          参与数据中心内局部同步
-        </p>
-        <p>
-          主控数据中心处全局同步
-        </p>
-        
-        <!-- <img src="static/HiPS line.png" height="200" width="500"></img>
-        <img src="static/HiPS model.png" height="400" width="500"></img> -->
+        <ul> 
+            <li><h3>双向稀疏传输技术（BSC）</h3></li>
+            <figure>
+              <img src="static/BSC示意图.png"></img>
+              <figcaption align="center">BSC示意图</figcaption>
+            </figure>
+            <strong>
+              核心思想：
+            </strong>
+            <p>
+              为了进一步降低广域网通信开销，在压缩传输方面，提出双向稀疏梯度传输技术，
+              通过域间传输稀疏的上下行梯度以大幅度压缩模型更新数据量，
+              减少需要在数据中心间传输的数据量，从而减少通信带宽需求、提高通信效率。
+            </p>
+            <li><h3>混合精度传输技术（FP16）</h3></li>
+            <figure>
+              <img src="static\混合精度传输技术示意图.png"></img>
+              <figcaption align="center">FP16示意图</figcaption>
+            </figure>
+            <strong>
+              核心思想：
+            </strong>
+            <p>
+              以半精度浮点格式FP16数据训练模型，从而显著提高本地模型更新计算速度。
+              以单精度浮点格式FP32缓存模型训练结果，从而保存尽可能多的模型更新信息，
+              在减少所需内存和训练时间的同时，获得与单精度训练相同的精度。
+            </p>
+        </ul> 
       </div>
     </div>
   </div>
@@ -132,7 +127,7 @@
   width:100%;
 }
 .left{
-  font-size: 16px;
+  /* font-size: 16px; */
   width:65%;
   padding: 15px 1%;
   position:absolute;
@@ -145,17 +140,18 @@
 
 .right{
   float: right;
+  height: 1400px;
   width: 30%;
   padding: 15px 1%;
   background: white;
   margin:0px 0px 0px 0px;
   border-left:2px solid #f5f5f5;
 }
-.left img, .right img{
+/* .left img, .right img{
   display: block;
   margin: 0 auto;
   width: 80%;
-}
+} */
 /* .top{
   float: top;
   border-bottom:1px solid #ebedf0;

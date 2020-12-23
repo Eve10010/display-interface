@@ -14,75 +14,76 @@
     <div v-if="data_id==0">
     <v-list>
       <v-list-tile @click="changeRoute('HiPS', 1)">
-        <v-list-tile-action>
-        </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 1}, 'item-title' ]" >{{ $t('分层参数服务器架构') }}</v-list-tile-title>
+        <!-- <v-list-tile-action>
+        </v-list-tile-action> -->
+        <v-list-tile-title :class="[{'active': selectedIndex === 1}, 'item-title' ]" >{{ $t('机器学习分布式聚合架构（含中继节点）') }}</v-list-tile-title>
       </v-list-tile>
 
       <v-list-tile @click="changeRoute('BSC', 2)">
-        <v-list-tile-action>
+        <!-- <v-list-tile-action>
           
-        </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 2}, 'item-title' ]"> {{ $t('双向稀疏梯度压缩') }}</v-list-tile-title>
+        </v-list-tile-action> -->
+        <v-list-tile-title :class="[{'active': selectedIndex === 2}, 'item-title' ]"> {{ $t('轻量级数据传输技术') }}</v-list-tile-title>
       </v-list-tile>
 
       <v-list-tile @click="changeRoute('DGT', 3)">
-      <v-list-tile-action>
+      <!-- <v-list-tile-action>
          
-        </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('差异化梯度调度传输') }}</v-list-tile-title>
+        </v-list-tile-action> -->
+        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('协议差异化数据传输技术') }}</v-list-tile-title>
       </v-list-tile>
 
             <v-list-tile @click="changeRoute('TS', 4)">
-      <v-list-tile-action>
+      <!-- <v-list-tile-action>
         
-        </v-list-tile-action> 
-        <v-list-tile-title :class="[{'active': selectedIndex === 4}, 'item-title' ]">{{ $t('多播传输调度') }}</v-list-tile-title>
+        </v-list-tile-action>  -->
+        <v-list-tile-title :class="[{'active': selectedIndex === 4}, 'item-title' ]">{{ $t('多播数据传输调度技术') }}</v-list-tile-title>
       </v-list-tile>
 
             <v-list-tile @click="changeRoute('P3', 5)">
-      <v-list-tile-action>
+      <!-- <v-list-tile-action>
         
-        </v-list-tile-action> 
-        <v-list-tile-title :class="[{'active': selectedIndex === 5}, 'item-title' ]">{{ $t('细粒度传输调度') }}</v-list-tile-title>
+        </v-list-tile-action>  -->
+        <v-list-tile-title :class="[{'active': selectedIndex === 5}, 'item-title' ]">{{ $t('细粒度模型传输调度技术') }}</v-list-tile-title>
       </v-list-tile>
       </v-list>
     </div>
     <div v-else>
       <v-list>
-      <v-list-tile @click="changeRoute('HiPS_2', 1)">
-        <v-list-tile-action>
-        </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 1}, 'item-title' ]" >{{ $t('机器学习分布式聚合架构（含中继节点）') }}</v-list-tile-title>
-      </v-list-tile>
+        <v-list-tile @click="changeRoute('HiPS_2', 1)"  style="align-items: baseline; ">
+          <!-- <v-list-tile-action>
+          </v-list-tile-action> -->
+          <v-list-tile-title  :class="[{'active': selectedIndex === 1}, 'item-title' ]" style="align-items: baseline; ">{{ $t('机器学习分布式聚合架构（含中继节点）') }}</v-list-tile-title>
+        </v-list-tile>
 
-      <v-list-tile @click="changeRoute('BSC_2', 2)">
-        <v-list-tile-action>
+        <v-list-tile @click="changeRoute('BSC_2', 2)">
+          <!-- <v-list-tile-action>
+            
+          </v-list-tile-action> -->
+          <v-list-tile-title :class="[{'active': selectedIndex === 2}, 'item-title' ]"> {{ $t('轻量级数据传输技术') }}</v-list-tile-title>
+        </v-list-tile>
+
+        <v-list-tile @click="changeRoute('DGT_2', 3)">
+        <!-- <v-list-tile-action>
           
-        </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 2}, 'item-title' ]"> {{ $t('双向稀疏梯度压缩') }}</v-list-tile-title>
-      </v-list-tile>
+          </v-list-tile-action> -->
+          <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('协议差异化数据传输技术') }}</v-list-tile-title>
+        </v-list-tile>
 
-      <v-list-tile @click="changeRoute('DGT_2', 3)">
-      <v-list-tile-action>
-         
-        </v-list-tile-action>
-        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('差异化梯度调度传输') }}</v-list-tile-title>
-      </v-list-tile>
+        <v-list-tile @click="changeRoute('TS_2', 4)">
+          <!-- <v-list-tile-action>
+            
+          </v-list-tile-action> 
+              -->
+          <v-list-tile-title :class="[{'active': selectedIndex === 4}, 'item-title' ]">{{ $t('多播数据传输调度技术') }}</v-list-tile-title>
+        </v-list-tile>
 
-            <v-list-tile @click="changeRoute('TS_2', 4)">
-      <v-list-tile-action>
-        
-        </v-list-tile-action> 
-        <v-list-tile-title :class="[{'active': selectedIndex === 4}, 'item-title' ]">{{ $t('多播传输调度') }}</v-list-tile-title>
-      </v-list-tile>
-
-            <v-list-tile @click="changeRoute('P3_2', 5)">
-      <v-list-tile-action>
-        
-        </v-list-tile-action> 
-        <v-list-tile-title :class="[{'active': selectedIndex === 5}, 'item-title' ]">{{ $t('细粒度传输调度') }}</v-list-tile-title>
-      </v-list-tile>
+        <v-list-tile @click="changeRoute('P3_2', 5)">
+          <!-- <v-list-tile-action>
+          
+          </v-list-tile-action>  -->
+          <v-list-tile-title :class="[{'active': selectedIndex === 5}, 'item-title' ]">{{ $t('细粒度模型传输调度技术') }}</v-list-tile-title>
+        </v-list-tile>
     </v-list>
     </div>
  <!--
@@ -154,21 +155,42 @@ export default {
   }
 
   .toolbar .text {
-    padding-left: 15px;
+    /* padding-left: 15px; */
     color: white;
     text-decoration:none;
   }
 
   .item-title {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: normal;
+    /* font-size: 16px;  */
+    word-break:break-all;
+    text-align: center;
+    align-content: center;
   }
-  .item-sub-title {
+  .v-list__tile {
+    /* align-items: baseline; */
+    height: 60px;
+    
+  }
+  .v-list__tile__title {
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    
+    word-break:break-all;
+    
+    white-space: normal; 
+    overflow:  visible;
+}
+  /* .item-sub-title {
     font-size: 15px;
     font-weight: 500;
-  }
+  } */
 
   .active {
     font-weight: bold;
+    /* text-align: center; */
+
   }
 </style>

@@ -66,6 +66,10 @@
 
 <script>
   const echarts = require('echarts');
+  var title_size = 28;
+  var legend_size = 18;
+  var yAxis_size = 15;
+  var xAxis_size = 15;
   export default{
     data () {
       return {
@@ -84,13 +88,21 @@
         // 绘制图表
         myChart1.setOption({
             legend: {
-              right:'5%',
-              top:'7%'
+              // right:'5%',
+              top:'7%',
               // orient:'vertical', 
+              // top:'10%',
+            // right:0,
+              textStyle:{
+                fontSize:legend_size, //字体大小
+              }, 
             },
             tooltip: {},
             title:{
               text:'155M带宽下达到同一收敛程度耗费时间',
+              textStyle:{
+                fontSize:title_size, //字体大小
+              },
             },
             grid: [
               
@@ -103,37 +115,82 @@
                 { type: 'category', gridIndex: 0, 
                   data: ['HiPS', 'HiPS-FP16', 'HiPS-BiSparse', 'HiPS-BiSparse+FP16'],
                   axisLabel:{
+                    fontSize:xAxis_size,
                     interval: 0,
-                    rotate:15
+                    rotate:20
                   },
                 },
                 { type: 'category', gridIndex: 1, 
                   data: ['HiPS', 'HiPS-FP16', 'HiPS-BiSparse', 'HiPS-BiSparse+FP16'],
                   axisLabel:{
+                    fontSize:xAxis_size,
                     interval: 0,
-                    rotate:15
+                    rotate:20
                   },
                 },
                 { type: 'category', gridIndex: 2, 
                   data: ['HiPS', 'HiPS-FP16', 'HiPS-BiSparse', 'HiPS-BiSparse+FP16'],
                   axisLabel:{
+                    fontSize:xAxis_size,
                     interval: 0,
-                    rotate:15
+                    rotate:20
                   },
                 },
                 { type: 'category', gridIndex: 3, 
                   data: ['HiPS', 'HiPS-FP16', 'HiPS-BiSparse', 'HiPS-BiSparse+FP16'],
                   axisLabel:{
+                    fontSize:xAxis_size,
                     interval: 0,
-                    rotate:15
+                    rotate:20
                   },
                 },
             ],
             yAxis: [
-                {type: 'value', gridIndex: 0, name: '收敛精度（%）'},
-                {type: 'value', gridIndex: 1, name: '收敛时间（h）'},
-                {type: 'value', gridIndex: 2, name: '收敛轮数（次）'},
-                {type: 'value', gridIndex: 3, name: '单轮次通信时延（s）'}
+                {
+                  type: 'value', 
+                  gridIndex: 0, 
+                  name: '收敛精度（%）',
+                  nameTextStyle:{
+                    fontSize:yAxis_size,
+                  },
+                  axisLabel:{
+                    fontSize:yAxis_size,
+                  },
+                  
+                },
+                {
+                  type: 'value', 
+                  gridIndex: 1,
+                  name: '收敛时间（h）',
+                  nameTextStyle:{
+                    fontSize:yAxis_size,
+                  },
+                  axisLabel:{
+                    fontSize:yAxis_size,
+                  },
+                },
+                {
+                  type: 'value', 
+                  gridIndex: 2,
+                  name: '收敛轮数（次）',
+                  nameTextStyle:{
+                    fontSize:yAxis_size,
+                  },
+                  axisLabel:{
+                    fontSize:yAxis_size,
+                  },
+                },
+                {
+                  type: 'value', 
+                  gridIndex: 3, 
+                  name: '单轮次通信时延（s）',
+                  nameTextStyle:{
+                    fontSize:yAxis_size,
+                  },
+                  axisLabel:{
+                    fontSize:yAxis_size,
+                  },
+                }
             ],
             
             series: [
@@ -197,7 +254,7 @@
   width:100%;
 }
 .left{
-  font-size: 16px;
+  /* font-size: 16px; */
   width:70%;
   padding: 15px 1%;
   position:absolute;
@@ -213,13 +270,13 @@
   align-self: start;
 }
 .pic-echarts{
-  width:680px;
-  height:510px;
+  width:800px;
+  height:600px;
 }
 .right{
 
   float: right;
-  height: 1000px;
+  height: 1400px;
   width: 30%;
   padding: 15px 1%;
   background: white;
@@ -227,11 +284,11 @@
   border-left:2px solid #f5f5f5;
 }
 
-.left img, .right img{
+/* .left img, .right img{
   display: block;
   margin: 0 auto;
   width: 80%;
-}
+} */
 
 p{
   text-indent: 2em;

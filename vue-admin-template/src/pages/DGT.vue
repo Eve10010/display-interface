@@ -11,32 +11,21 @@
     </div>
     <div class="right" >
       <div class="right-inside">
-        <h2 style="align:center">分层参数服务器架构（HiPS）sm </h2>
+        <h2 style="align:center">差异化传输协议（DGT）</h2>
         <figure>
-          <img src="static/HiPS.png"></img>
-          <figcaption align="center">HiPS架构示意图</figcaption>
+            <img src="static/DGT示意图.png"></img>
+            <figcaption align="center">DGT示意图</figcaption>
         </figure>
-        <br>
-        <p>针对现有典型框架中计算节点与参数服务器直接通信引发的<strong>显著通信瓶颈</strong>
-                ，根据数据中心内外通信环境的巨大差异性，设计了<strong>分层参数服务器通信架构HiPS</strong>，
-                实现对数据中心内外通信环境的隔离，同时降低通信、运维、安全等多方面成本和风险。
-        </p>
-        <br>
-        <figure>
-          <img src="static/HiPS-procedure.png"></img>
-          <figcaption align="center">HiPS流程示意图</figcaption>
-        </figure>
-        
         <strong>
-          核心思想：
+            核心思想：
         </strong>
         <p>
-          参与数据中心内局部同步
-          
-        </p>
-        <p>
-          
-          主控数据中心处全局同步
+            利用机器学习基于梯度下降的优化算法对中间结果误差的有界容忍性特点，
+            差异化梯度传输（Differential Gradient Transmission，简称DGT）
+            结合流量调度策略混合使用可靠传输协议TCP和不可靠传输协议UDP进行数据传输，
+            使对模型收敛重要的数据得到优先可靠传输，非重要的数据使用低优先级尽力传输。
+            在保证模型收敛的同时，使数据传输更加高效，
+            降低由于参数同步突发流量产生的大量重传时延，加速协同训练的参数同步过程。
         </p>
         
       </div>
@@ -300,7 +289,7 @@
   width:100%;
 }
 .left{
-  font-size: 16px;
+  /* font-size: 16px; */
   width:70%;
   padding: 15px 1%;
   position: absolute;
@@ -315,17 +304,17 @@
 .right{
   float: right;
   width: 30%;
-  height:1000px;
+  height:900px;
   padding: 15px 1%;
   background: white;
   margin:0px 0px 0px 0px;
   border-left:2px solid #f5f5f5;
 }
-.left img, .right img{
+/* .left img, .right img{
   display: block;
   margin: 0 auto;
   width: 80%;
-}
+} */
 
 p{
   text-indent: 2em;

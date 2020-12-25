@@ -4,6 +4,8 @@
     <div class="left" >
       <div class="pic-echarts" ref="chart1"></div>
       <div class="description" > 
+        Vue SocketIO Test
+        <v-btn @click="onSendMsgBtn">send 'hello world!' </v-btn>
             <p>使用P3通信算法后，HiPS框架中分布式机器学习模型训练时效性
             <strong>提升了30.38%</strong>。
             </p>
@@ -44,7 +46,24 @@
         showRight:true,
       };  
     },
+
+    sockets:{
+      connect(){
+        console.log('socket connected')
+      },
+      disconnect() {
+        console.log('socket disconnect')
+      },
+    },
+
     methods: {
+      onSendMsgBtn(){
+        this.sockets.subscribe('training_update',(data) =>{
+          console.log(data.current_task)
+        })
+        this.$socket.emit('data_event',{ 'data_key': 'Hello world!' })
+      },
+
       changSRight () {
         this.showRight = ! this.showRight;
       },
@@ -90,6 +109,7 @@
         
     },
   mounted () {
+    console.log('mounted');
     this.initCharts1();
   }
   }

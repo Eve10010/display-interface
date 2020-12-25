@@ -29,6 +29,18 @@ const i18n = setupAndGetI18n(Vue);
 import swatches from 'vue-swatches';
 import "vue-swatches/dist/vue-swatches.min.css"
 
+
+// import VueSocketio
+import VueSocketIO from 'vue-socket.io'
+
+// Vue.use(VueSocketio, 'http://127.0.0.1:5000' + namespace)
+Vue.use(
+  new VueSocketIO({
+    debug: true,
+    connection: 'http://127.0.0.1:5000'
+  })
+)
+
 /*import echarts from 'echarts';
 
 Vue.prototype.$echarts = echarts;
@@ -42,6 +54,10 @@ Vue.component('swatches', swatches);
 setupComponents(Vue);
 
 Vue.use(Vuetify);
+
+
+
+
 
 Vue.config.productionTip = false
 

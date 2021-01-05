@@ -2,36 +2,71 @@
   <v-container fluid>
     <v-row align="stretch">
       <v-col :cols="auto" class="d-flex flex-column align-center">
-        <v-switch v-model="showRightPanel" @click:prepend="showRightPanel = !showRightPanel" label="简介" color="primary"></v-switch>
-        <div style="width:600px;height:450px;" ref="chart1"></div>
+        <h2>任务训练耗时</h2>
+        <v-row style="align:center;justify-content:center">
+          <div style="width:600px;height:450px;" ref="chart1"></div>
+          <div style="width:600px;height:450px;" ref="chart2"></div>
+        </v-row>
         <div class="description">
-          <p>相比直接在155Mbps网部署MXNET,
+          <p>带宽受限情况下,相比MXNET，
             <strong>
-              HiPS模型收敛精度无损；HiPS减少76%的训练收敛时间。
+              HiPS减少76%的训练收敛时间。
             </strong>
           </p>
-          <p style="text-indent:-2em;padding:2em;align-self: start;">
-            注释：<br>
-            模型ResNet-18的参数量为11.17M；<br>
-            模型ResNet-34的参数量为21.27M；<br>
-            模型ResNet-50的参数量为23.49M；<br>
-            模型ResNet-101的参数量为42.46M。<br>
-            “HiPS-1G”：HiPS架构在1G网络带宽环境下测试；<br>
-            “HiPS-155M”：HiPS架构在155M网络带宽环境下测试；<br>
-            “MXNET-1G”：MXNET架构在1G网络带宽环境下测试；<br>
-            “MXNETV-155M”：MXNET架构在155M网络带宽环境下测试。
-          </p>
+          <v-divider ></v-divider>
+          <v-row style="align:center;justify-content:center; ">
+              <v-simple-table style="padding:10px">
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <th class="text-left"> 名词 </th>
+                      <th class="text-left"> 参数量(M) </th>
+                      <th class="text-left"> 模型类型 </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="item in desserts1" :key="item.name" >
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.size }}</td>
+                      <td>{{ item.model }}</td>
+                    </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
+              <v-simple-table style="padding:10px">
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <th class="text-left"> 名词 </th>
+                      <th class="text-left"> 测试框架 </th>
+                      <th class="text-left"> 域间带宽 </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="item in desserts2" :key="item.name" >
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.frame }}</td>
+                      <td>{{ item.bandwidth }}</td>
+                    </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
+          </v-row>
         </div>
       </v-col>
+      <v-switch v-model="showRightPanel" @click:prepend="showRightPanel = !showRightPanel"
+          label="简介" color="primary" style="padding:10px">
+      </v-switch>
       <v-divider vertical></v-divider>
       <transition name="slide-fade">
         <v-col :cols="3" v-show="showRightPanel" style="padding: 14px;">
-          <h2>分层参数服务器架构（HiPS）</h2>
+          <!-- <h2>分层参数服务器架构（HiPS）</h2> -->
+          <h2 style="position: sticky; top: 64px; background: white; z-index: 1;">分层参数服务器架构（HiPS）</h2>
           <figure>
             <img src="@/static/HiPS.png">
             <figcaption>HiPS架构示意图</figcaption>
           </figure>
-          <br>
+          <!-- <br>
           <p>针对现有典型框架中计算节点与参数服务器直接通信引发的<strong>显著通信瓶颈</strong>
             ，根据数据中心内外通信环境的巨大差异性，设计了<strong>分层参数服务器通信架构HiPS</strong>，
             实现对数据中心内外通信环境的隔离，同时降低通信、运维、安全等多方面成本和风险。
@@ -40,13 +75,15 @@
           <figure>
             <img src="@/static/HiPS-procedure.png">
             <figcaption>HiPS流程示意图</figcaption>
-          </figure>
+          </figure> -->
           <strong>
-            核心思想：
+            优势：
           </strong>
           <ul>
-            <li>参与数据中心内局部同步</li>
-            <li>主控数据中心处全局同步</li>
+            <li>缓解中心服务器拥塞</li>
+            <li>利用数据中心内高带宽</li>
+            <li>隔离数据中心内外通信环境</li>
+            <li>降低数据中心间通信风险</li>
           </ul>
         </v-col>
       </transition>
@@ -55,7 +92,7 @@
 </template>
 
 <script>
-var title_size = 28;
+// var title_size = 28;
 var legend_size = 18;
 var yAxis_size = 15;
 var xAxis_size = 15;
@@ -64,66 +101,163 @@ export default {
   data() {
     return {
       showRightPanel: true,
+      desserts1: [
+        {
+          name: '轻任务',
+          size: 11.17,
+          model:'ResNet-18',
+        },
+        {
+          name: '较轻任务',
+          size: 21.27,
+          model:'ResNet-34',
+        },
+        {
+          name: '较重任务',
+          size: 23.49,
+          model:'ResNet-50',
+        },
+        {
+          name: '重任务',
+          size: 42.46,
+          model:'ResNet-101',
+        }, 
+      ],
+      desserts2: [
+        {
+          name: 'HiPS-大带宽',
+          frame: 'HiPS',
+          bandwidth:'1Gbps',
+        },
+        {
+          name: 'HiPS-受限带宽',
+          frame: 'HiPS',
+          bandwidth:'155Mbps',
+        },
+        {
+          name: 'MXNET-大带宽',
+          frame: 'MXNET',
+          bandwidth:'1Gbps',
+        },
+        {
+          name: 'MXNET-受限带宽',
+          frame: 'MXNET',
+          bandwidth:'155Mbps',
+        },
+      ],
     };
   },
   methods: {
-    initCharts1() {
+    initCharts1(){
       let myChart1 = echarts.init(this.$refs.chart1);
-      // 绘制图表
       myChart1.setOption({
-        legend: {
-          top: '10%',
-          // right:0,
-          textStyle: {
-            fontSize: legend_size, //字体大小
+        title:{},
+        tooltip:{},
+        legend:{
+          data:['重任务','较重任务','较轻任务','轻任务',],
+            textStyle:{
+              fontSize: legend_size,
+              textAlign:'auto',
+
+            },
+            top: '7%',
+        },
+        dataset:{
+          source:[
+            ['product', 'MXNET-受限带宽', 'HiPS-受限带宽', 'MXNET-大带宽', 'HiPS-大带宽'],
+            ['重任务', 277.44, 65.34, 83.11, 39.45],
+            ['较重任务', 153.35, 36.56, 42.49, 16.46],
+            ['较轻任务', 131.49, 29.02, 33.53, 13.86],
+            ['轻任务', 6.70, 1.78, 2.29, 1.22]
+          ],
+        },
+        xAxis:{
+          type: 'category', gridIndex: 0,
+          axisLabel: {
+            fontSize: xAxis_size,
+            interval: 0,
+          }
+        },
+        yAxis:{
+          name: '单轮迭代时间（s）',gridIndex: 0,
+          nameTextStyle: {
+            fontSize: yAxis_size,
+          },
+          axisLabel: {
+            fontSize: yAxis_size,
           },
         },
-        grid: {
-          top: '30%',
+        grid:{
+          top: '25%',
           left: '5%',
-          right: '4%',
+          right: '5%',
           bottom: '3%',
           containLabel: true
         },
+        series:[
+          {type: 'bar', seriesLayoutBy: 'row', name:'重任务'},
+          {type: 'bar', seriesLayoutBy: 'row', name:'较重任务'},
+          {type: 'bar', seriesLayoutBy: 'row', name:'较轻任务'},
+          {type: 'bar', seriesLayoutBy: 'row', name:'轻任务'},
+        ],
+      });
+
+    },
+
+    initCharts2() {
+      let myChart2 = echarts.init(this.$refs.chart2,'light');
+      // 绘制图表
+      myChart2.setOption({
         title: {
-          text: 'HiPS与MXNET单次迭代时间对比',
-          textStyle: {
-            fontSize: title_size, //字体大小
-          },
+          
         },
         tooltip: {},
+        legend:[
+          {
+            data:['MXNET-受限带宽','HiPS-受限带宽','','MXNET-大带宽','HiPS-大带宽'],
+            textStyle:{
+              fontSize: legend_size,
+              textAlign:'auto',
+            },
+            top: '3%',
+          },
+        ],
         dataset: {
-          dimensions: ['product', 'ResNet-18', 'ResNet-34', 'ResNet-50', 'ResNet-101'],
-          //'HiPS-1G', 'HiPS-155M', 'MXNET-1G', 'MXNET-155M'
           source: [
-            {product: 'HiPS-1G', 'ResNet-18': 1.22, 'ResNet-34': 13.86, 'ResNet-50': 16.46, 'ResNet-101': 39.45},
-            {product: 'HiPS-155M', 'ResNet-18': 1.78, 'ResNet-34': 29.02, 'ResNet-50': 36.56, 'ResNet-101': 65.34},
-            {product: 'MXNET-1G', 'ResNet-18': 2.29, 'ResNet-34': 33.53, 'ResNet-50': 42.49, 'ResNet-101': 83.11},
-            {product: 'MXNET-155M', 'ResNet-18': 6.70, 'ResNet-34': 131.49, 'ResNet-50': 153.35, 'ResNet-101': 277.44}
+            ['product', 'MXNET-受限带宽', 'HiPS-受限带宽', 'MXNET-大带宽', 'HiPS-大带宽'],
+            ['重任务', 277.44, 65.34, 83.11, 39.45],
+            ['较重任务', 153.35, 36.56, 42.49, 16.46],
+            ['较轻任务', 131.49, 29.02, 33.53, 13.86],
+            ['轻任务', 6.70, 1.78, 2.29, 1.22]
           ]
         },
-        xAxis: {
+        xAxis:{
           type: 'category',
           axisLabel: {
             fontSize: xAxis_size,
             interval: 0,
-            // rotate:20
           },
-
         },
-        yAxis: {
+        yAxis:{
           name: '单轮迭代时间（s）',
           nameTextStyle: {
             fontSize: yAxis_size,
           },
           axisLabel: {
             fontSize: yAxis_size,
-            // rotate:20
           },
         },
-        // Declare several bar series, each will be mapped
-        // to a column of dataset.source by default.
+        grid: [
+          {
+            top: '25%',
+            left: '5%',
+            right: '5%',
+            bottom: '3%',
+            containLabel: true
+          }
+        ],
         series: [
+          // These series are in the second grid.
           {type: 'bar'},
           {type: 'bar'},
           {type: 'bar'},
@@ -131,9 +265,11 @@ export default {
         ],
       });
     },
+    
   },
   mounted() {
     this.initCharts1();
+    this.initCharts2();
   }
 }
 </script>
